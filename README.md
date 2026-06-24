@@ -92,3 +92,17 @@ Describe your app in numbered steps so a reader can follow along without watchin
 5. <!-- Add more steps as needed -->
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or link to a demo video here -->
+
+## Sample Output (main.py)
+
+```
+Today's Schedule for Jordan (2026-06-23):
+08:00 — 08:10: Feeding Mochi [Mochi] — 10m — p=10 — pending 
+08:10 — 08:40: Morning walk [Mochi] — 30m — p=9 — pending 
+08:40 — 09:00: Play session [Biscuit] — 20m — p=7 — pending 
+09:00 — 09:25: Grooming Biscuit [Biscuit] — 25m — p=6 — pending 
+
+Total duration: 85
+
+Reasoning: Tasks selected by priority and available time; conflict checks and recurrence are placeholders.
+```
