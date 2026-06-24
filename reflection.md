@@ -7,6 +7,15 @@
 - Briefly describe your initial UML design.
 - What classes did you include, and what responsibilities did you assign to each?
 
+Some core actions a user should be able to perform is  adding a pet, scheduling a walk, and viewing today's tasks. The user should also be able to track all the care tasks for their pet like walks, feeding, meds, enrichment, and grooming. In the app constraints should also be visible like time available, priority, and owner preferences. 
+
+- Class Owner will holds the owner’s name, available time, preferences, pets, and tasks.
+- Class Pet will stores each pet’s name, species, age, notes, and its care tasks.
+- Class Task will represents one care activity with duration, priority, category, recurrence, and optional pet association.
+- Class Scheduler will builds the daily plan from owner tasks, sorting and filtering by time and priority.
+Class DailyPlan/ScheduleItem will capture the final schedule and explain why each task was chosen and when it happens.
+This model will keeps the system focused on pets and their care tasks, while separating scheduling logic from the data model.
+
 **b. Design changes**
 
 - Did your design change during implementation?

@@ -1,0 +1,69 @@
+classDiagram
+    class Owner {
+        +String name
+        +int availableMinutes
+        +Map~String,String~ preferences
+        +List~Pet~ pets
+        +List~Task~ tasks
+        +addPet(pet)
+        +addTask(task)
+        +getAvailableTime()
+        +getPreferredTasks()
+    }
+
+    class Pet {
+        +String name
+        +String species
+        +int age
+        +String notes
+        +List~Task~ tasks
+        +addTask(task)
+        +getTasks()
+        +getCareSummary()
+    }
+
+    class Task {
+        +String title
+        +int durationMinutes
+        +String priority
+        +String category
+        +boolean recurring
+        +String petName
+        +String notes
+        +estimateEffort()
+        +isHighPriority()
+        +summary()
+    }
+
+    class Scheduler {
+        +generateDailyPlan(owner, date)
+        +sortTasks(tasks)
+        +filterTasksByTime(tasks, availableMinutes)
+        +explainPlan(plan)
+    }
+
+    class DailyPlan {
+        +Date date
+        +List~ScheduleItem~ items
+        +int totalDuration
+        +addItem(item)
+        +getSummary()
+        +getReasoning()
+    }
+
+    class ScheduleItem {
+        +Task task
+        +String startTime
+        +String endTime
+        +String reason
+        +formatEntry()
+    }
+
+    Owner "1" --> "*" Pet : owns
+    Owner "1" --> "*" Task : manages
+    Pet "1" --> "*" Task : needs
+    Scheduler --> Owner : uses
+    Scheduler --> Task : evaluates
+    Scheduler --> DailyPlan : creates
+    DailyPlan "1" o-- "*" ScheduleItem : contains
+    ScheduleItem --> Task : schedules
