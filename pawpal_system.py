@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import date
+from datetime import date, datetime, time, timedelta
 from typing import Dict, List, Optional
 
 
@@ -9,20 +9,21 @@ from typing import Dict, List, Optional
 class Task:
     title: str
     duration_minutes: int
-    priority: str
+    priority_score: int = 1
     category: Optional[str] = None
     recurring: bool = False
-    pet_name: Optional[str] = None
+    pet: Optional["Pet"] = None
     notes: Optional[str] = None
+    dependencies: List["Task"] = field(default_factory=list)
 
     def estimate_effort(self) -> int:
-        pass
+        return int(self.duration_minutes)
 
     def is_high_priority(self) -> bool:
-        pass
+        return self.priority_score >= 8
 
     def summary(self) -> str:
-        pass
+        return f"{self.title} ({self.duration_minutes}m, priority={self.priority_score})"
 
 
 @dataclass
